@@ -1,157 +1,235 @@
-# Chicken-Disease-Classification--Project
+# 🐔 Chicken Disease Classification using Deep Learning
 
+<p align="center">
+  <img src="assets/home.png" alt="Home Page" width="90%">
+</p>
 
-## Workflows
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.11-blue?logo=python">
+  <img src="https://img.shields.io/badge/TensorFlow-Deep%20Learning-orange?logo=tensorflow">
+  <img src="https://img.shields.io/badge/Flask-Web%20App-black?logo=flask">
+  <img src="https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker">
+  <img src="https://img.shields.io/badge/License-MIT-green">
+</p>
 
-1. Update config.yaml
-2. Update secrets.yaml [Optional]
-3. Update params.yaml
-4. Update the entity
-5. Update the configuration manager in src config
-6. Update the components
-7. Update the pipeline 
-8. Update the main.py
-9. Update the dvc.yaml
+An end-to-end Deep Learning application that detects **Chicken Coccidiosis** from fecal images using **Transfer Learning (VGG16)**. The project includes a complete ML pipeline, Flask backend, responsive web interface, Docker support, and is ready for deployment on Render.
 
+---
 
-# How to run?
-### STEPS:
+# ✨ Features
+
+- 🧠 Transfer Learning with VGG16
+- 📸 Chicken disease image classification
+- 🌐 Responsive Flask web application
+- 📦 Modular ML pipeline
+- 📊 Model training & evaluation
+- 🐳 Docker support
+- ☁️ Render deployment ready
+- ⚡ Optimized inference (model loaded once)
+
+---
+
+# 🖼 Application Preview
+
+| Home | Upload | Prediction |
+|:----:|:------:|:----------:|
+| ![](assets/home.png) | ![](assets/upload.png) | ![](assets/prediction.png) |
+
+---
+
+# 🏗 System Architecture
+
+```mermaid
+flowchart LR
+
+A[User Uploads Image]
+--> B[Flask Web Application]
+
+B --> C[Image Preprocessing]
+
+C --> D[VGG16 CNN Model]
+
+D --> E{Prediction}
+
+E -->|Healthy| F[Healthy]
+
+E -->|Coccidiosis| G[Coccidiosis]
+
+F --> H[Display Result]
+
+G --> H
+```
+
+---
+
+# ⚙️ ML Pipeline
+
+```mermaid
+flowchart TD
+
+A[Data Ingestion]
+--> B[Prepare Base Model]
+
+B --> C[Prepare Callbacks]
+
+C --> D[Model Training]
+
+D --> E[Model Evaluation]
+
+E --> F[Prediction Pipeline]
+
+F --> G[Flask Web Application]
+```
+
+---
+
+# 📁 Project Structure
+
+```text
+.
+├── app.py
+├── main.py
+├── config/
+├── src/
+│   └── cnnClassifier/
+│       ├── components/
+│       ├── config/
+│       ├── entity/
+│       ├── pipeline/
+│       └── utils/
+├── templates/
+├── static/
+├── artifacts/
+├── assets/
+├── Dockerfile
+├── docker-compose.yml
+├── dvc.yaml
+├── requirements.txt
+└── README.md
+```
+
+---
+
+# 🛠 Tech Stack
+
+| Category | Technologies |
+|-----------|--------------|
+| Language | Python |
+| Deep Learning | TensorFlow, Keras |
+| Computer Vision | VGG16 Transfer Learning |
+| Backend | Flask |
+| Frontend | HTML, CSS, JavaScript |
+| DevOps | Docker, DVC |
+| Deployment | Render |
+
+---
+
+# 🚀 Installation
 
 Clone the repository
 
 ```bash
-https://github.com/entbappy/Chicken-Disease-Classification--Project
+git clone https://github.com/b14z31ng/Chiken_disease_class.git
+
+cd Chiken_disease_class
 ```
-### STEP 01- Create a conda environment after opening the repository
+
+Create a virtual environment
 
 ```bash
-conda create -n cnncls python=3.8 -y
+conda create -n chicken python=3.11 -y
+
+conda activate chicken
 ```
 
-```bash
-conda activate cnncls
-```
+Install dependencies
 
-
-### STEP 02- install the requirements
 ```bash
 pip install -r requirements.txt
 ```
 
+---
+
+# 🏋️ Train the Model
 
 ```bash
-# Finally run the following command
+python main.py
+```
+
+---
+
+# ▶️ Run the Application
+
+```bash
 python app.py
 ```
 
-Now,
-```bash
-open up you local host and port
+Visit
+
+```
+http://localhost:8080
 ```
 
+---
 
-### DVC cmd
+# 🐳 Docker
 
-1. dvc init
-2. dvc repro
-3. dvc dag
+Build
 
+```bash
+docker build -t chicken-disease .
+```
 
+Run
 
-# AWS-CICD-Deployment-with-Github-Actions
+```bash
+docker compose up --build
+```
 
-## 1. Login to AWS console.
+---
 
-## 2. Create IAM user for deployment
+# 📈 Model
 
-	#with specific access
+- **Architecture:** VGG16 (Transfer Learning)
+- **Framework:** TensorFlow / Keras
+- **Classes:**
+  - 🟢 Healthy
+  - 🔴 Coccidiosis
 
-	1. EC2 access : It is virtual machine
+---
 
-	2. ECR: Elastic Container registry to save your docker image in aws
+# 🚀 Improvements
 
+Compared to the original implementation, this project includes:
 
-	#Description: About the deployment
+- Modern responsive UI
+- Redesigned frontend
+- Optimized prediction pipeline
+- TensorFlow/Keras compatibility fixes
+- Docker support
+- Render deployment support
+- Improved project organization
+- Better user experience
 
-	1. Build docker image of the source code
+---
 
-	2. Push your docker image to ECR
+# 🔮 Future Work
 
-	3. Launch Your EC2 
+- Multi-class disease detection
+- Confidence score visualization
+- Batch prediction
+- Explainable AI (Grad-CAM)
+- MLflow integration
+- CI/CD pipeline
 
-	4. Pull Your image from ECR in EC2
+---
 
-	5. Lauch your docker image in EC2
+# 🙏 Acknowledgement
 
-	#Policy:
+This project is based on the educational implementation by **Krish Naik**. The project was independently rebuilt, configured, debugged, modernized, and extended with a redesigned frontend, Docker support, Render deployment readiness, and compatibility improvements for newer TensorFlow/Keras versions.
 
-	1. AmazonEC2ContainerRegistryFullAccess
+---
 
-	2. AmazonEC2FullAccess
+# 📄 License
 
-	
-## 3. Create ECR repo to store/save docker image
-    - Save the URI: 566373416292.dkr.ecr.us-east-1.amazonaws.com/chicken
-
-	
-## 4. Create EC2 machine (Ubuntu) 
-
-## 5. Open EC2 and Install docker in EC2 Machine:
-	
-	
-	#optinal
-
-	sudo apt-get update -y
-
-	sudo apt-get upgrade
-	
-	#required
-
-	curl -fsSL https://get.docker.com -o get-docker.sh
-
-	sudo sh get-docker.sh
-
-	sudo usermod -aG docker ubuntu
-
-	newgrp docker
-	
-# 6. Configure EC2 as self-hosted runner:
-    setting>actions>runner>new self hosted runner> choose os> then run command one by one
-
-
-# 7. Setup github secrets:
-
-    AWS_ACCESS_KEY_ID=
-
-    AWS_SECRET_ACCESS_KEY=
-
-    AWS_REGION = us-east-1
-
-    AWS_ECR_LOGIN_URI = demo>>  566373416292.dkr.ecr.ap-south-1.amazonaws.com
-
-    ECR_REPOSITORY_NAME = simple-app
-
-
-
-
-# AZURE-CICD-Deployment-with-Github-Actions
-
-## Save pass:
-
-
-
-## Run from terminal:
-
-docker build -t chickenapp.azurecr.io/chicken:latest .
-
-docker login chickenapp.azurecr.io
-
-docker push chickenapp.azurecr.io/chicken:latest
-
-
-## Deployment Steps:
-
-1. Build the Docker image of the Source Code
-2. Push the Docker image to Container Registry
-3. Launch the Web App Server in Azure 
-4. Pull the Docker image from the container registry to Web App server and run 
+Licensed under the MIT License.
